@@ -1,18 +1,18 @@
 <template>
-    <section id="live2d-box" ref="live2d" @mousedown.stop="start($event)">
-        <MessageBox :show.sync="showMsg"></MessageBox>
-        <Tools 
-            :show.sync="showTools"
-            :showChatBox.sync="showChatBox"
-            @switchRole="switchRole"
-            @dressUp="dressUp">
-        </Tools>
-        <canvas id="live2d" :width="280" :height="250" @mouseover="mouseover" @mouseout="mouseout"></canvas>
-        <div class="live2d-loading" v-show="modelLoading">
-            <CircleLoading></CircleLoading>
-        </div>
-        <ChatBox :show.sync="showChatBox"></ChatBox>
-    </section>
+  <section id="live2d-box" ref="live2d" @mousedown.stop="start($event)">
+    <MessageBox :show.sync="showMsg"></MessageBox>
+    <Tools
+      :show.sync="showTools"
+      :showChatBox.sync="showChatBox"
+      @switchRole="switchRole"
+      @dressUp="dressUp"
+    ></Tools>
+    <canvas id="live2d" :width="280" :height="250" @mouseover="mouseover" @mouseout="mouseout"></canvas>
+    <div class="live2d-loading" v-show="modelLoading">
+      <CircleLoading></CircleLoading>
+    </div>
+    <ChatBox :show.sync="showChatBox"></ChatBox>
+  </section>
 </template>
 <script>
 import { randNumber } from '@/utils/number'
@@ -30,7 +30,7 @@ export default {
         MessageBox,
         Tools
     },
-    data () {
+    data() {
         return {
             Local: null,
             showMsg: false, // 显示信息框
@@ -48,43 +48,46 @@ export default {
         }
     },
     computed: {
-        live2d () {
+        live2d() {
             return this.$refs.live2d
         },
         screen() {
-            if (typeof window !== "undefined") {
+            if (typeof window !== 'undefined') {
                 return this.$store.state.system.screen
             }
         }
     },
-    async mounted () {
+    async mounted() {
         try {
-            await import('assets/live2D/live2d.js')
+            await import('assets/live2d/live2d.js')
             this.initModel()
-        }catch(err) {
+        } catch (err) {
             console.log('live2d加载失败!!!')
         }
     },
     methods: {
-        start (e) {
+        start(e) {
             this.live2dObj.isDrag = true
             this.live2dObj.distanceX = e.clientX - this.live2d.offsetLeft
             this.live2dObj.distanceY = e.clientY - this.live2d.offsetTop
             document.addEventListener('mousemove', this.move)
             document.addEventListener('mouseup', this.end)
         },
-        move (e) {
+        move(e) {
             if (!this.live2dObj.isDrag) return
-            let {l, t} = this.movingRange(e.clientX - this.live2dObj.distanceX, e.clientY - this.live2dObj.distanceY )
+            let { l, t } = this.movingRange(
+                e.clientX - this.live2dObj.distanceX,
+                e.clientY - this.live2dObj.distanceY
+            )
             this.live2d.style.left = l + 'px'
             this.live2d.style.top = t + 'px'
         },
-        end () {
+        end() {
             this.live2dObj.isDrag = false
             document.addEventListener('mousemove', null)
             document.addEventListener('mouseup', null)
         },
-        movingRange (l, t) {
+        movingRange(l, t) {
             let minL = 0,
                 maxL = this.screen.width - this.live2d.offsetWidth,
                 minT = 0,
@@ -93,11 +96,11 @@ export default {
             if (l > maxL) l = maxL
             if (t < minT) t = minT
             if (t > maxT) t = maxT
-            return {l, t}
+            return { l, t }
         },
 
         // 更换模型
-        changeModel () {
+        changeModel() {
             return new Promise(async resolve => {
                 const res = await Live2d.changeModel({
                     modelId: this.modelId
@@ -109,7 +112,7 @@ export default {
             })
         },
         // 更换服装
-        changeTextures () {
+        changeTextures() {
             return new Promise(async resolve => {
                 const res = await Live2d.changeTextures({
                     modelId: this.modelId,
@@ -119,24 +122,24 @@ export default {
                 resolve(data)
             })
         },
-        async initModel () {
+        async initModel() {
             return new Promise(async resolve => {
-                const {Local} = await import('@/utils/storage')
+                const { Local } = await import('@/utils/storage')
                 this.Local = Local
                 let ids = Local.get(config.keys.live2DKey)
                 if (typeof ids === 'string') {
                     let arr = ids.split(',')
                     if (!this.isIntNum(arr[0])) {
                         await this.changeModel()
-                    }else{
+                    } else {
                         this.modelId = arr[0]
                     }
                     if (!this.isIntNum(arr[1])) {
                         await this.changeTextures()
-                    }else{
+                    } else {
                         this.texturesId = arr[1]
                     }
-                }else{
+                } else {
                     // this.modelId = 5
                     // this.texturesId = 0
                     await this.changeModel()
@@ -146,16 +149,24 @@ export default {
             })
         },
         // 重新load模型
-        loadModel () {
+        loadModel() {
             this.modelLoading = true
             // this.getModelJson()
-            const url = `${config.app.baseUrl}/live2d/model/${this.modelId}/textures/${this.texturesId}`
-            loadlive2d("live2d", url, this.loadingFinish())
+            const url = `${config.app.baseUrl}/live2d/model/${
+                this.modelId
+            }/textures/${this.texturesId}`
+            loadlive2d('live2d', url, this.loadingFinish())
         },
-        loadingFinish () {
-            console.log('live2d',`模型${this.modelId}-${this.texturesId}加载完成`)
+        loadingFinish() {
+            console.log(
+                'live2d',
+                `模型${this.modelId}-${this.texturesId}加载完成`
+            )
             this.modelLoading = false
-            this.Local.set(config.keys.live2DKey, `${this.modelId},${this.texturesId}`)
+            this.Local.set(
+                config.keys.live2DKey,
+                `${this.modelId},${this.texturesId}`
+            )
         },
         // getModelJson () {
         //     return new Promise(async resolve => {
@@ -191,27 +202,27 @@ export default {
         //         }
         //     })
         // },
-        async switchRole () {
+        async switchRole() {
             await this.changeModel()
             this.loadModel()
         },
-        async dressUp () {
-            const {texturesId} = await this.changeTextures()
+        async dressUp() {
+            const { texturesId } = await this.changeTextures()
             if (texturesId !== this.texturesId) {
                 this.texturesId = texturesId
                 this.loadModel()
                 this.$bus.$emit('onShowMsg', '我的新衣服好看嘛')
-            }else{
+            } else {
                 this.$bus.$emit('onShowMsg', '我还没有其他衣服呢!')
             }
         },
-        mouseover () {
+        mouseover() {
             this.showTools = true
         },
-        mouseout () {
+        mouseout() {
             this.showTools = false
         },
-        isIntNum(val){
+        isIntNum(val) {
             let re = /^[0-9]+$/
             return re.test(val)
         }
@@ -220,6 +231,6 @@ export default {
 </script>
 
 <style lang="less">
-    @import './style.less';
+@import './style.less';
 </style>
 
