@@ -37,20 +37,20 @@ const prod = merge({}, baseConf, {
             sourceMap: true
         })
     },
-
+    devtool: '#source-map',
     optimization: {
-        runtimeChunk: {
-            name: "manifest"
-        },
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendor",
-                    chunks: "all"
-                }
-            }
-        },
+        // runtimeChunk: {
+        //     name: "manifest"
+        // },
+        // splitChunks: {
+        //     cacheGroups: {
+        //         commons: {
+        //             test: /[\\/]node_modules[\\/]/,
+        //             name: "vendor",
+        //             chunks: "all"
+        //         }
+        //     }
+        // },
         /*
         
         optimization: {
@@ -107,18 +107,19 @@ const prod = merge({}, baseConf, {
             to: prodConf.assetsPath,
             ignore: [".*"]
         }]),
-        
+
         // html配置
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: resolve('code/client/index.html'),
             favicon: resolve('static/client/favicon.ico'),
             inject: true,
-            dll: (function(){
-                let name = require(path.resolve(__dirname, './manifest.json')).name
-                // return `${prefix}javascript/dll/prod.${name}.dll.js`
-                return 'http://wintermelon.oss-cn-hangzhou.aliyuncs.com/javascript/dll/prod.lib.dll.js'
-            })()
+            // dll: (function () {
+            //     let name = require(path.resolve(__dirname, './manifest.json')).name
+            //     // return `${prefix}javascript/dll/prod.${name}.dll.js`
+            //     // return 'http://wintermelon.oss-cn-hangzhou.aliyuncs.com/javascript/dll/prod.lib.dll.js'
+            //     return 'http://localhost/dll/prod.lib.dll.js'
+            // })()
             //压缩配置
             // minify: {
             //     //删除Html注释
@@ -128,7 +129,7 @@ const prod = merge({}, baseConf, {
             //     //去除属性引号
             //     removeAttributeQuotes: true
             // },
-            
+
         })
     ]
 })

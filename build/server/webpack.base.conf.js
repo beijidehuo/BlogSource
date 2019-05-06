@@ -8,7 +8,7 @@ const resolve = dir => path.join(__dirname, '../../code/client/', dir)
 const assetsPath = dir => path.posix.join(baseConfig.assetsPath, dir)
 
 module.exports = {
-    mode: isProd ? 'production':'development',
+    mode: isProd ? 'production' : 'development',
     context: path.resolve(__dirname, '../../'),
     output: {
         path: baseConfig.path,
@@ -82,10 +82,10 @@ module.exports = {
             filename: assetsPath('css/[name].[chunkhash.8].css')
         }),
 
-        new webpack.DllReferencePlugin({
-            context: path.resolve(__dirname, '../../'),
-            manifest: require('./manifest.json'),
-            // name: 'lib'
-        })
+        // new webpack.DllReferencePlugin({
+        //     context: path.resolve(__dirname, '../../'),
+        //     manifest: require('./manifest.json'),
+        //     // name: 'lib'
+        // })
     ]
 }

@@ -51,11 +51,12 @@ const dev = merge(baseConf, {
             filename: 'index.html',
             template: resolve('code/client/index.html'),
             inject: true,
-            dll: (function(){
-                let name = require(path.resolve(__dirname, './manifest.json')).name
-                // return `${prefix}javascript/dll/dev.${name}.dll.js`
-                return 'http://wintermelon.oss-cn-hangzhou.aliyuncs.com/javascript/dll/dev.lib.dll.js'
-            })()
+            // dll: (function () {
+            //     let name = require(path.resolve(__dirname, './manifest.json')).name
+            //     // return `${prefix}javascript/dll/dev.${name}.dll.js`
+            //     // return 'http://wintermelon.oss-cn-hangzhou.aliyuncs.com/javascript/dll/dev.lib.dll.js'
+            //     return 'http://localhost/dll/dev.lib.dll.js'
+            // })()
         }),
 
         //编译提示插件
@@ -78,7 +79,7 @@ const dev = merge(baseConf, {
             }
         }),
 
-        
+
         // new webpack.DefinePlugin({
         //     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         //     // 'process.env.RELEASE_VERSION': JSON.stringify(gitSha)
