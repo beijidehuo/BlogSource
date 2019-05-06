@@ -4,8 +4,8 @@ import qs from 'qs'
 import {
     Message
 } from 'element-ui'
-import {router} from '@/router'
-import { removeToken } from '@/utils/token'
+import { router } from '@/router'
+import { removeToken, setToken } from '@/utils/token'
 
 axios.defaults.withCredentials = true;
 axios.interceptors.request.use(config => {
@@ -25,6 +25,9 @@ export default class Axios {
             return router.push('/login')
         }
         if (res.status === 200 || res.status === 304) {
+            if (res.data && res.data.data && res.data.data.token) {
+                setToken(res.data.data.token)
+            }
             return res.data
         }
         return {
