@@ -7,7 +7,7 @@ export const {
     router,
     store
 } = createApp()
-import './errorMonitoring'
+// import './errorMonitoring'
 import getInitData from '@/getInitData'
 import '@/plugin/iconfont'
 import '@/styles/index.less'
@@ -43,9 +43,9 @@ router.onReady(() => {
         }
         // 这里如果有加载指示器(loading indicator)，就触发
         Promise.all(asyncDataHooks.map(hook => hook({
-                store,
-                route: to
-            })))
+            store,
+            route: to
+        })))
             .then(async () => {
                 // 停止加载指示器(loading indicator)
                 next()
