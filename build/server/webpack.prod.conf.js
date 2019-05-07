@@ -7,7 +7,7 @@ const baseConf = require('./webpack.base.conf') //webpack基本配置
 
 require('babel-core/register') // babel编译
 // dll 配置
-const { prefix } = require('../../code/server/utils/oss/ali-oss')
+// const { prefix } = require('../../code/server/utils/oss/ali-oss')
 
 //一个webpack配置合并模块,可简单的理解为与Object.assign()功能类似！
 const merge = require("webpack-merge")
