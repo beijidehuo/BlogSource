@@ -30,9 +30,9 @@ export default {
     const token = jwt.sign(payload, config.auth.admin_secret, {
       expiresIn: '24h'
     }) //token签名 有效期为24小时
-    // ctx.cookies.set(config.auth.tokenKey, token, {
-    //   httpOnly: false, // 是否只用于http请求中获取
-    // })
+    ctx.cookies.set(config.auth.tokenKey, token, {
+      httpOnly: false, // 是否只用于http请求中获取
+    })
     // ctx.cookies.set('a','1', {         
     //         // secure: '', // 安全 cookie   默认false，设置成true表示只有 https可以访问
     //         // domain:'localhost', // 写cookie所在的域名
@@ -42,7 +42,7 @@ export default {
     //         // httpOnly:false,  // 是否只用于http请求中获取
     //         overwrite:false  // 是否允许重写
     // })
-    ctx.send({ message: '登录成功', token: token })
+    ctx.send()
   },
 
   // 获取用户信息
