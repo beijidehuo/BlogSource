@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production'
-const domainName = isProd ? 'http://localhost:3000' : 'http://localhost:3000'
+const domainName = isProd ? 'http://45.32.34.153:3000' : 'http://localhost:3000'
 // if (typeof window !== 'undefined') {
 //     console.log(location.origin)
 // }else{
