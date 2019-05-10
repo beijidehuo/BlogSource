@@ -32,7 +32,11 @@ export default app => {
     ctx.set("Access-Control-Allow-Headers", 'Content-Type,Content-Length, Authorization,\'Origin\',Accept,X-Requested-With');
     ctx.set("Access-Control-Allow-Methods", 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-    await next();
+    if (ctx.request.method === 'OPTIONS') {
+      ctx.send()
+    } else {
+      await next();
+    }
   });
   // api
   let apiRouter = require('./routes/api').default
