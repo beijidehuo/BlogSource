@@ -34,24 +34,24 @@ export default {
       const reg = new RegExp(keyword, 'i')
       const res = await Mongodb.findPage(blogModel, {
         $or: [{
-            type: {
-              $regex: reg
-            }
-          },
-          {
-            title: {
-              $regex: reg
-            }
+          type: {
+            $regex: reg
           }
+        },
+        {
+          title: {
+            $regex: reg
+          }
+        }
         ]
       }, null, {
-        limit: pagesize * 1,
-        skip: (pageindex - 1) * pagesize,
-        sort: {
-          level: -1,
-          updateTime: -1
-        }
-      })
+          limit: pagesize * 1,
+          skip: (pageindex - 1) * pagesize,
+          sort: {
+            level: -1,
+            updateTime: -1
+          }
+        })
       ctx.send(res)
     } catch (err) {
       console.log(err)
@@ -102,7 +102,7 @@ export default {
     const _id = ctx.params.id
     try {
       console.log(_id)
-      return
+      // return
       await Mongodb.remove(blogModel, {
         _id
       })
