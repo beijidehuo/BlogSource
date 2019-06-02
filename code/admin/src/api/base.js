@@ -4,7 +4,7 @@ const isAppProd = process.env.app_config_env === 'prod'
 
 export default class Base {
     static baseUrl = isProd
-        ? 'http://212.64.122.132:3000/api/admin'
+        ? 'http://212.64.122.132:80/api/admin'
         : '/admin_api'
     static get = axios.get.bind(axios) // 获取
     static post = axios.post.bind(axios) // 添加

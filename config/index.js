@@ -15,10 +15,10 @@ module.exports = {
             devtoolType: 'cheap-module-eval-source-map',
             proxyTable: {  //proxy代理
                 '/admin_api': {
-                    target: 'http://localhost:3000/api/admin',
+                    target: 'http://localhost:80/api/admin',
                     changeOrigin: true,
                     pathRewrite: {
-                      '^/admin_api': '/'
+                        '^/admin_api': '/'
                     }
                 }
             }
@@ -45,10 +45,10 @@ module.exports = {
             devtoolType: 'cheap-module-eval-source-map',
             proxyTable: {
                 '/client_api': {
-                    target: 'http://localhost:3000/api/client',
+                    target: 'http://localhost:80/api/client',
                     changeOrigin: true,
                     pathRewrite: {
-                      '^/client_api': '/'
+                        '^/client_api': '/'
                     }
                 }
             }
@@ -59,6 +59,6 @@ module.exports = {
             assetsPath: 'static',
             assetsSubDirectory: 'static',
             devtoolType: 'source-map'
-        } 
-    }  
+        }
+    }
 }
