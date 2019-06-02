@@ -1,6 +1,6 @@
 const isProd = process.env.NODE_ENV === 'production'
 const domainName = isProd
-    ? 'http://144.34.170.60:3000'
+    ? 'http://212.64.122.132:3000'
     : 'http://localhost:3000'
 // if (typeof window !== 'undefined') {
 //     console.log(location.origin)
