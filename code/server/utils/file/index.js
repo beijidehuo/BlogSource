@@ -108,10 +108,10 @@ export default class File {
                 file.pipe(fs.createWriteStream(fullFilPath))
 
                 file.on('end', async () => {
-                    promiseAll.push({
-                        name: `ali_${fieldname}`,
-                        promise: put(NODE_ENV+dirPath, path.join($publicPath, dirPath))
-                    })
+                   // promiseAll.push({
+                   //     name: `ali_${fieldname}`,
+                   //     promise: put(NODE_ENV+dirPath, path.join($publicPath, dirPath))
+                   // })
                     console.log('File [' + fieldname + '] Finished')
                     fileObj[fieldname] = prefix
                 })

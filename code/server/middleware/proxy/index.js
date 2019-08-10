@@ -5,7 +5,7 @@ export default () => {
   return async (ctx, next) => {
     if (ctx.origin === 'http://localhost:80') {
       proxy('/', {
-        target: 'http://dzblog.cn',
+        target: 'http://linhai.tech',
         changeOrigin: true,
       })
     } else {

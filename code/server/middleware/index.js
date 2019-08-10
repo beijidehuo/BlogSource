@@ -9,9 +9,9 @@ export default app => {
   app.use(async (ctx, next) => {
     if (ctx.url == '/favicon.ico') return
     await next()
-    if (ctx.origin === 'http://www.dzblog.cn') {
+    if (ctx.origin === 'http://www.linhai.tech') {
       ctx.status = 301
-      return ctx.redirect(`http://dzblog.cn${ctx.url}`)
+      return ctx.redirect(`http://linhai.tech${ctx.url}`)
     }
 
     ctx.status = 200
