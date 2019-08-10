@@ -1,8 +1,11 @@
 <template>
-    <nav class="bg-cover pc-nav df-col-c" :style="{backgroundImage: `url(${require('assets/images/background/blog.jpg')})`}">
+    <nav
+        class="bg-cover pc-nav df-col-c"
+        :style="{backgroundImage: `url(${require('assets/images/background/blog.jpg')})`}"
+    >
         <Cat class="avatar"></Cat>
-        <h1 class="name">Wintermelon</h1>
-        <div class="desc">是金子，总会花光的；是镜子，总会反光的</div>
+        <h1 class="name">beijidehuo</h1>
+        <div class="desc">当回首往事时，不因碌碌无为而悔恨，不因虚度年华和羞愧。</div>
         <ul class="align-c">
             <li v-for="(item, index) in linkList" :key="index" class="nav-icon">
                 <Tooltip :msg="item.name" place="top">
@@ -27,13 +30,13 @@ export default {
         Cat,
         Tooltip
     },
-    data () {
+    data() {
         return {
             linkList
         }
     },
     computed: {
-        visitors () {
+        visitors() {
             return this.$store.state.app.visitors
         }
     }
@@ -44,7 +47,8 @@ export default {
     position: fixed;
     height: 100%;
     width: 300px;
-    left: 0;top: 0;
+    left: 0;
+    top: 0;
     color: #fff;
     .name {
         margin: 15px 0;
@@ -64,7 +68,8 @@ export default {
     .footer {
         width: 100%;
         position: absolute;
-        bottom: 0;left: 0;
+        bottom: 0;
+        left: 0;
         text-align: center;
         padding: 20px 0;
         color: #cfcfcf;
@@ -74,8 +79,8 @@ export default {
         }
         .slogen {
             font-size: 16px;
-            font-family:Georgia;
-            font-style:italic; 
+            font-family: Georgia;
+            font-style: italic;
         }
     }
 }

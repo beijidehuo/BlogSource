@@ -1,6 +1,6 @@
 <template>
     <div id="me" class="me-layout" :class="[`${screenSize}-me-layout`]">
-        <Github path="https://github.com/cd-dongzi" id="my-github"></Github>
+        <Github path="https://github.com/beijidehuo" id="my-github"></Github>
         <MobileNav v-if="showMobileNav"></MobileNav>
         <MobileMain v-if="showMobileNav"></MobileMain>
         <PCNav v-if="showPCNav"></PCNav>
@@ -20,7 +20,7 @@ export default {
         PCNav: resolve => require(['./pc/nav'], resolve),
         PCMain: resolve => require(['./pc/main'], resolve)
     },
-    data () {
+    data() {
         return {
             showMobileNav: false,
             showPCNav: false
@@ -28,25 +28,25 @@ export default {
     },
     computed: {
         screenSize() {
-            if (typeof window !== "undefined") {
+            if (typeof window !== 'undefined') {
                 return this.$store.state.system.screenSize
             }
             return ''
         },
-        height () {
+        height() {
             if (typeof window !== 'undefined') {
                 if (this.$store.state.system.isPC) {
                     return this.$store.state.system.screen.height + 'px'
-                }else{
+                } else {
                     return 'auto'
                 }
-            }else{
+            } else {
                 return 'auto'
             }
         }
     },
     methods: {
-        setShow () {
+        setShow() {
             const bol = this.screenSize === 'sm'
             this.showMobileNav = bol
             this.showPCNav = !bol
@@ -57,11 +57,12 @@ export default {
 <style lang="less">
 #my-github {
     position: fixed;
-    right: 0;top: 0;
+    right: 0;
+    top: 0;
     z-index: 10;
 }
 .lg-me-layout {
-    #my-github{
+    #my-github {
         left: 220px;
     }
 }

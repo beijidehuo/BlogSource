@@ -1,9 +1,12 @@
 <template>
-    <nav class="bg-cover mobile-nav df-col-c" :style="{backgroundImage: `url(${require('assets/images/background/blog.jpg')})`}">
+    <nav
+        class="bg-cover mobile-nav df-col-c"
+        :style="{backgroundImage: `url(${require('assets/images/background/blog.jpg')})`}"
+    >
         <Cat class="avatar"></Cat>
-        <h1 class="name" :class="{fixed: nameActive}" ref="name">Wintermelon</h1>
+        <h1 class="name" :class="{fixed: nameActive}" ref="name">beijidehuo</h1>
         <div class="name-placeholder" v-if="nameActive"></div>
-        <div class="desc">是金子，总会花光的；是镜子，总会反光的</div>
+        <div class="desc">当回首往事时，不因碌碌无为而悔恨，不因虚度年华和羞愧。</div>
         <ul class="align-c">
             <li v-for="(item, index) in linkList" :key="index" class="nav-icon">
                 <Link class="df-c" :href="item.link">
@@ -23,7 +26,7 @@ export default {
     components: {
         Cat
     },
-    data () {
+    data() {
         return {
             linkList,
             nameScrollTop: 0,
@@ -31,20 +34,21 @@ export default {
         }
     },
     computed: {
-        visitors () {
+        visitors() {
             return this.$store.state.app.visitors
         }
     },
-    mounted () {
+    mounted() {
         this.nameScrollTop = this.$refs.name.offsetTop
         window.addEventListener('scroll', this.onScroll)
     },
     methods: {
-        onScroll () {
-            let t = document.documentElement.scrollTop || document.body.scrollTop
+        onScroll() {
+            let t =
+                document.documentElement.scrollTop || document.body.scrollTop
             if (t >= this.nameScrollTop) {
                 this.nameActive = true
-            }else{
+            } else {
                 this.nameActive = false
             }
         }
@@ -64,7 +68,8 @@ export default {
         &.fixed {
             background-color: rgba(186, 164, 119, 0.3);
             position: fixed;
-            top: 0;left: 0;
+            top: 0;
+            left: 0;
         }
     }
     .name-placeholder {
