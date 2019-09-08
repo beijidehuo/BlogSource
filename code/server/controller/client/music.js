@@ -18,8 +18,8 @@ function formatData(data) {
       author,
       desc,
       releaseTime,
-      ali_cover,
-      ali_url
+      cover,
+      url
     } = obj
     return {
       _id,
@@ -28,8 +28,8 @@ function formatData(data) {
       author,
       desc,
       releaseTime,
-      url: ali_url,
-      cover: ali_cover
+      url: url,
+      cover: cover
     }
   }
 }
@@ -46,8 +46,8 @@ export default {
     }, {
       name: 1,
       author: 1,
-      ali_cover: 1,
-      ali_url: 1,
+      cover: 1,
+      url: 1,
       releaseTime: 1,
       _id: 1
     })
@@ -74,10 +74,10 @@ export default {
         type: 1,
         name: 1,
         author: 1,
-        ali_cover: 1,
+        cover: 1,
         desc: 1,
         releaseTime: 1,
-        ali_url: 1,
+        url: 1,
         _id: 1,
       }, {
         limit: pagesize * 1,
@@ -106,20 +106,20 @@ export default {
       let re = new RegExp(keyword, 'i')
       let data = await Mongodb.random(musicModel, {
         $or: [{
-            type: {
-              $regex: re
-            }
-          },
-          {
-            name: {
-              $regex: re
-            }
-          },
-          {
-            author: {
-              $regex: re
-            }
+          type: {
+            $regex: re
           }
+        },
+        {
+          name: {
+            $regex: re
+          }
+        },
+        {
+          author: {
+            $regex: re
+          }
+        }
         ],
         isVisible: true
       }, {
@@ -132,10 +132,10 @@ export default {
           type: 1,
           name: 1,
           author: 1,
-          ali_cover: 1,
+          cover: 1,
           desc: 1,
           releaseTime: 1,
-          ali_url: 1,
+          url: 1,
           _id: 1,
         }
       })
@@ -161,8 +161,8 @@ export default {
         $project: {
           name: 1,
           author: 1,
-          ali_cover: 1,
-          ali_url: 1,
+          cover: 1,
+          url: 1,
           releaseTime: 1,
           _id: 1
         }
