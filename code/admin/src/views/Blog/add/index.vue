@@ -31,8 +31,8 @@
             <el-form-item label="Github" prop="github">
                 <el-input type="text" v-model="info.github"></el-input>
             </el-form-item>
-            <el-form-item label="发布时间" prop="releaseTime">
-                <el-date-picker class="block" v-model="info.releaseTime" type="date" placeholder="选择发布日期"></el-date-picker>
+            <el-form-item label="更新时间" prop="updateTime">
+                <el-date-picker class="block" v-model="info.updateTime" type="date" placeholder="选择更新日期"></el-date-picker>
             </el-form-item>
             <el-form-item label="是否可见" prop="isVisible" class="left-item">
                 <el-switch v-model="info.isVisible"></el-switch>
@@ -68,7 +68,7 @@
                     source: 1,
                     github: '',
                     isVisible: true,
-                    releaseTime: new Date()
+                    updateTime: new Date()
                 },
                 loading: false,
                 rules: {
@@ -87,8 +87,8 @@
                     isVisible: [
                         { required: true, message: '请选择', trigger: 'change', type: 'boolean' }
                     ],
-                    releaseTime: [
-                        { required: true, message: '请选择文章的发布时间', trigger: 'change', type: 'date' }
+                    updateTime: [
+                        { required: true, message: '请选择文章的更新时间', trigger: 'change', type: 'date' }
                     ]
                 }
             }
