@@ -13,7 +13,7 @@
                 <template slot-scope="scope">
                     <div v-if="scope.column.property == 'isVisible'">{{scope.row[scope.column.property]?'是':'否'}}</div>
                     <div v-else-if="scope.column.property == 'source'">{{scope.row[scope.column.property] === 1?'原创':scope.row[scope.column.property] === 2?'转载':'翻译'}}</div>
-                    <div v-else-if="scope.column.property == 'releaseTime'">{{scope.row[scope.column.property] | parseTime('{y}-{m}-{d}')}}</div>
+                    <div v-else-if="scope.column.property == 'updateTime'">{{scope.row[scope.column.property] | parseTime('{y}-{m}-{d}')}}</div>
                     <div v-else>{{scope.row[scope.column.property] || '无'}}</div>
                 </template>
             </el-table-column>
@@ -113,7 +113,7 @@
                     },
                     {
                         label: '发布时间',
-                        prop: 'releaseTime',
+                        prop: 'updateTime',
                         hidden: false,
                         headerAlign: 'center',
                         align: 'center',
@@ -195,7 +195,7 @@
             edit(scope) {
                 console.log(scope)
                 this.editShow = true;
-                scope.row.releaseTime = new Date(scope.row.releaseTime)
+                scope.row.updateTime = new Date(scope.row.updateTime)
                 this.blogInfo = scope.row
             },
             filterTag(value, row) {

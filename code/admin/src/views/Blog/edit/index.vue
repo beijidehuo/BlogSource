@@ -30,8 +30,8 @@
             <el-form-item label="Github" prop="github">
                 <el-input type="text" v-model="info.github"></el-input>
             </el-form-item>
-            <el-form-item label="发布时间" prop="releaseTime">
-                <el-date-picker class="block" v-model="info.releaseTime" type="date" placeholder="选择发布日期"></el-date-picker>
+            <el-form-item label="发布时间" prop="updateTime">
+                <el-date-picker class="block" v-model="info.updateTime" type="date" placeholder="选择发布日期"></el-date-picker>
             </el-form-item>
             <el-form-item label="是否可见" prop="isVisible" class="left-item">
                 <el-switch v-model="info.isVisible"></el-switch>
@@ -88,7 +88,7 @@
                         message: '请填写文章内容',
                         trigger: 'blur'
                     }],
-                    releaseTime: [{
+                    updateTime: [{
                         required: true,
                         message: '请选择文章的发布时间',
                         trigger: 'change',
