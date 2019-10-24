@@ -84,7 +84,7 @@ export default {
     const _id = ctx.params.id
     const params = ctx.request.body
     try {
-      params.updateTime = Date.now()
+      params.updateTime = params.updateTime || Date.now()
       params.html = marked(params.html);
       await Mongodb.update(blogModel, {
         _id
