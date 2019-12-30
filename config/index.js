@@ -15,7 +15,7 @@ module.exports = {
             devtoolType: 'cheap-module-eval-source-map',
             proxyTable: {  //proxy代理
                 '/admin_api': {
-                    target: 'http://localhost:3000/api/admin',
+                    target: 'http://localhost:80/api/admin',
                     changeOrigin: true,
                     pathRewrite: {
                         '^/admin_api': '/'
