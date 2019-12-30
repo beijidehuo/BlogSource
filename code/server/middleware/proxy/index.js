@@ -3,7 +3,7 @@ import c2k from 'koa2-connect'
 
 export default () => {
   return async (ctx, next) => {
-    if (ctx.origin === 'http://localhost:80') {
+    if (ctx.origin === 'http://localhost:3000') {
       proxy('/', {
         target: 'http://linhai.tech',
         changeOrigin: true,

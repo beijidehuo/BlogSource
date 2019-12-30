@@ -1,7 +1,7 @@
 const isProd = process.env.NODE_ENV === 'production'
 const domainName = isProd
-    ? 'http://linhai.tech'
-    : 'http://localhost:80'
+    ? 'http://localhost:3000'
+    : 'http://localhost:3000'
 // if (typeof window !== 'undefined') {
 //     console.log(location.origin)
 // }else{
