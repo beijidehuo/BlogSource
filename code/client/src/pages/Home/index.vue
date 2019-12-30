@@ -21,12 +21,15 @@ export default {
     },
     methods: {
         setShow () {
-            import('@/utils/storage').then(({Session}) => {
-                const isEntry = Session.get('entry')
-                this.showEntry = !isEntry
-                this.showMain = isEntry
-                Session.set('entry', 1)
-            })
+            // import('@/utils/storage').then(({Session}) => {
+            //     const isEntry = Session.get('entry')
+            //     this.showEntry = !isEntry
+            //     this.showMain = isEntry
+            //     Session.set('entry', 1)
+            // })
+            // 不根据 session 来判断是否进入初始页，后续添加完备案信息后可重新考虑
+            this.showEntry = false;
+            this.showMain = true;
         }
     }
 }
