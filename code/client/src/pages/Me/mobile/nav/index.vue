@@ -16,6 +16,8 @@
         </ul>
         <div class="footer">
             <p class="visitors">大神到访数：{{visitors}}</p>
+            <br>
+            <a href="http://beian.miit.gov.cn" target="_blank">粤ICP备19066542号</a>
         </div>
     </nav>
 </template>

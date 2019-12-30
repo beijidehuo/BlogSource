@@ -2,6 +2,8 @@
     <footer id="footer" ref="footer">
         <p class="visitors">大神到访数：{{visitors}}</p>
         <p class="slogen">All or Nothing， Now or Never</p>
+        <br>
+        <a href="http://beian.miit.gov.cn" target="_blank">粤ICP备19066542号</a>
     </footer>
 </template>
 <script>
